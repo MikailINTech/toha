@@ -1,5 +1,5 @@
 <div
-  class="col-sm-12 col-md-6 col-lg-4 p-2 filtr-item"
+  class="col-sm-12 col-md-6 col-lg-6 p-2 filtr-item"
   data-category='all, {{ delimit  .tags ","}}'
 >
   <div class="card mt-1">
@@ -10,24 +10,13 @@
             {{ if .logo }}
 
             {{ $logoImage:= resources.Get .logo}}
-            {{ if $logoImage }}
-            {{/*  svg don't support "Fit" operation   */}}
-            {{ if ne $logoImage.MediaType.SubType "svg" }}
-              {{ $logoImage = $logoImage.Fit "24x24" }}
+            <img class="card-img" src="{{ $logoImage.RelPermalink }}" alt="{{ .name }}" />
             {{ end }}
-
-            <img class="card-img-xs" src="{{ $logoImage.RelPermalink }}" alt="{{ .name }}" />
-            {{ end }}
-            {{ end }}
-            <h5 class="card-title mb-0">{{ .name }}</h5>
-          </div>
-          <div class="sub-title">
-            <span>{{ .role }}</span>
-            <span>{{ .timeline }}</span>
           </div>
         </div>
       </a>
       <div class="card-body text-justify pt-1 pb-1">
+        <h5 class="card-title mb-0">{{ .name }}</h5>
         <p>{{ .summary | markdownify }}</p>
         <!-- Display project card technology tags -->
         <div class="project-card-footer">
