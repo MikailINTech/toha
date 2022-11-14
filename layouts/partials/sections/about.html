@@ -25,6 +25,14 @@
       <p class="p-1 text-justify">
         {{ .summary | markdownify }}
       </p>
+      {{ if .available }}
+      <pre>
+        <code>
+          <p style="color:green;";>In[1] :</p>mikail.job.is_available()
+          <p style="color:red;";>Out[1]:</p>True
+        </code>
+      </pre>
+      {{ end }}
       <div class="text-container ml-auto">
         <ul class="social-link d-flex">
           {{ range .socialLinks }}
